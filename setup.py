@@ -1,12 +1,12 @@
 import os
 from setuptools import find_packages, setup
 
-version = '3.0.1'
+version = '1.0.0'
 
 install_requires = [
     # Minimum dependencies for the plugin to function correctly
-    f'acme>={version}',
-    f'certbot>={version}',
+    f'acme>=3.0.1',
+    f'certbot>=3.0.1',
     "tencentcloud-sdk-python-common>=3.0.1227",
     "tencentcloud-sdk-python-dnspod>=3.0.1227",
 ]
@@ -28,7 +28,6 @@ setup(
     url='https://github.com/10935336/certbot-dns-dnspod-109',
     author="10935336",
     author_email='109@pha.pub',
-    license='Apache License 2.0',
     python_requires='>=3.9',
     classifiers=[
         'Development Status :: 5 - Production/Stable',

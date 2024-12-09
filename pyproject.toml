@@ -1,0 +1,18 @@
+[project]
+name = "certbot-dns-dnspod-109"
+version = "1.0.0"
+authors = [
+    { name="10935336", email="109@pha.pub" },
+]
+description = "The `certbot-dns-dnspod-109` plugin automates the process of completing a `dns-01` challenge (`~acme.challenges.DNS01`) by creating, and subsequently removing, TXT records using the Dnspod API (Tencent Cloud API 3.0)."
+readme = "Readme.md"
+requires-python = ">=3.9"
+classifiers = [
+    'Programming Language :: Python :: 3',
+    'License :: OSI Approved :: Apache Software License',
+    'Operating System :: POSIX :: Linux',
+]
+
+[project.urls]
+Homepage = "https://github.com/10935336/certbot-dns-dnspod-109"
+Issues = "https://github.com/10935336/certbot-dns-dnspod-109/issues"
