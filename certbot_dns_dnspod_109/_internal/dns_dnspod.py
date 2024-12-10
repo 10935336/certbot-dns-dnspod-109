@@ -20,10 +20,12 @@ class Authenticator(dns_common.DNSAuthenticator):
     This Authenticator uses the Dnspod API to fulfill a dns-01 challenge.
     """
 
+    # required by certbot
+    description = 'Obtain certificates using a DNS TXT record (if you are using Dnspod for DNS).'
+
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
         self.credentials: Optional[CredentialsConfiguration] = None
-        self.description = 'Obtain certificates using a DNS TXT record (if you are using Dnspod for DNS).'
         self.ACCOUNT_URL = 'https://console.cloud.tencent.com/cam'
         self.ttl = 600
 
