@@ -1,0 +1,4 @@
+acme>=3.0.1
+certbot>=3.0.1
+tencentcloud-sdk-python-common>=3.0.1227
+tencentcloud-sdk-python-dnspod>=3.0.1227

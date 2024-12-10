@@ -27,6 +27,8 @@ parts:
       - PIP_CONSTRAINT: $SNAPCRAFT_PART_SRC/snap-constraints.txt
       - SNAP_BUILD: "True"
     # To build cryptography and cffi if needed
+    python-requirements:
+      - snap-requirements.txt
     build-packages:
       - gcc
       - git
