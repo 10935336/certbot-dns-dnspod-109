@@ -1,7 +1,7 @@
 import os
 from setuptools import find_packages, setup
 
-version = '1.0.1'
+version = '1.0.2'
 
 install_requires = [
     # Minimum dependencies for the plugin to function correctly
@@ -21,14 +21,26 @@ test_extras = [
     'pytest',  # for running tests
 ]
 
+long_description = ""
+if os.path.exists("README.md"):
+    with open("README.md", encoding="utf-8") as f:
+        long_description = f.read()
+
 setup(
     name='certbot-dns-dnspod-109',
     version=version,
     description="Dnspod DNS Authenticator plugin for Certbot",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     url='https://github.com/10935336/certbot-dns-dnspod-109',
+    project_urls={
+        "Homepage": "https://github.com/10935336/certbot-dns-dnspod-109",
+        "Issues": "https://github.com/10935336/certbot-dns-dnspod-109/issues",
+    },
     author="10935336",
     author_email='109@pha.pub',
     python_requires='>=3.9',
+    license="Apache License 2.0",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Plugins',

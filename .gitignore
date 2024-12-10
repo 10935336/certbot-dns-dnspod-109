@@ -3,3 +3,5 @@
 /certbot_dns_dnspod_109/_internal/__pycache__
 /certbot_dns_dnspod_109/_internal/tests/__pycache__
 /.idea
+/certbot_dns_dnspod_109.egg-info
+/dist
