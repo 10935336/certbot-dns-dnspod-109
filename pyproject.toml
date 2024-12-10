@@ -1,6 +1,6 @@
 [project]
 name = "certbot-dns-dnspod-109"
-version = "1.0.0"
+version = "1.0.1"
 authors = [
     { name="10935336", email="109@pha.pub" },
 ]
