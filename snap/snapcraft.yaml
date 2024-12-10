@@ -6,14 +6,21 @@ confinement: strict
 grade: stable
 base: core24
 adopt-info: certbot-dns-dnspod-109
+platforms:
+  platform-amd64:
+    build-on: [amd64, arm64]
+    build-for: [amd64]
+  platform-arm64:
+    build-on: [amd64, arm64]
+    build-for: [arm64]
 
 parts:
   certbot-dns-dnspod-109:
     plugin: python
     source: .
     override-pull: |
-        craftctl default
-        craftctl set version=$(grep ^version $SNAPCRAFT_PART_SRC/setup.py | cut -f2 -d= | tr -d "'[:space:]")
+      craftctl default
+      craftctl set version=$(grep ^version $SNAPCRAFT_PART_SRC/setup.py | cut -f2 -d= | tr -d "'[:space:]")
     build-environment:
       # We set this environment variable while building to try and increase the
       # stability of fetching the rust crates needed to build the cryptography
@@ -43,8 +50,8 @@ parts:
     source: .
     stage: [setup.py, certbot-shared]
     override-pull: |
-        craftctl default
-        mkdir -p $SNAPCRAFT_PART_SRC/certbot-shared
+      craftctl default
+      mkdir -p $SNAPCRAFT_PART_SRC/certbot-shared
 
 slots:
   certbot:
