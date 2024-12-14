@@ -1,11 +1,11 @@
 # This file is generated automatically and should not be edited manually.
-name: certbot-dns-dnspod-109
+name: certbot-dns-dnspod-10935336
 summary: Dnspod DNS Authenticator plugin for Certbot
 description: Dnspod DNS Authenticator plugin for Certbot
 confinement: strict
 grade: stable
 base: core24
-adopt-info: certbot-dns-dnspod-109
+adopt-info: certbot-dns-dnspod-10935336
 platforms:
   platform-amd64:
     build-on: [amd64, arm64]
@@ -15,7 +15,7 @@ platforms:
     build-for: [arm64]
 
 parts:
-  certbot-dns-dnspod-109:
+  certbot-dns-dnspod-10935336:
     plugin: python
     source: .
     override-pull: |
