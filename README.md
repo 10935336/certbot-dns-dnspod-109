@@ -16,6 +16,7 @@ then this is your plugin.
 
 Tested on
 - Certbot 3.0.1
+- Certbot 5.1.0
 
 
 ## Usage
@@ -119,6 +120,7 @@ certbot certonly \
 
 在以下版本中测试通过
 - Certbot 3.0.1
+- Certbot 5.1.0
 
 ## 使用方法
 
