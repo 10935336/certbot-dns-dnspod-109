@@ -1,6 +1,8 @@
 [English](#english) | [简体中文](#%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
 
-![PyPI - Version](https://img.shields.io/pypi/v/certbot-dns-dnspod-109)
+<img alt="PyPI - Version" src="https://img.shields.io/pypi/v/certbot-dns-dnspod-109?link=https%3A%2F%2Fpypi.org%2Fproject%2Fcertbot-dns-dnspod-109%2F"> <img alt="Snapcraft Version" src="https://img.shields.io/snapcraft/v/certbot-dns-dnspod-10935336/latest/stable?link=https%3A%2F%2Fsnapcraft.io%2Fcertbot-dns-dnspod-10935336">
+
+
 
 # English
 
