@@ -1,7 +1,7 @@
 import os
 from setuptools import find_packages, setup
 
-version = '1.0.2'
+version = '1.0.3'
 
 install_requires = [
     # Minimum dependencies for the plugin to function correctly
