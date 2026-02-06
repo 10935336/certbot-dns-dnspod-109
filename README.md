@@ -5,6 +5,9 @@
 
 
 ## Just Another DNSPod DNS Authenticator plugin for Certbot
+
+Just Another Tencent Cloud DNSPod DNS Authenticator plugin for [Certbot](https://certbot.eff.org/)
+
 The `certbot-dns-dnspod-109` plugin automates the process of
 completing a `dns-01` challenge (`~acme.challenges.DNS01`)
 by creating, and subsequently removing, TXT records using the
@@ -17,6 +20,7 @@ then this is your plugin.
 Tested on
 - Certbot 3.0.1
 - Certbot 5.1.0
+- Certbot 5.2.2
 
 
 ## Usage
@@ -54,6 +58,11 @@ dns_dnspod_109_secret_id=foo
 dns_dnspod_109_secret_key=bar
 ```
 
+Optional parameters: 
+```ini
+dns_dnspod_109_endpoint=dnspod.tencentcloudapi.com
+```
+
 ### 4. Ready to go
 
 #### Usage Examples
@@ -76,6 +85,15 @@ certbot certonly \
   -d www.example.com
 ```
 
+Obtain a wildcard certificate for `example.com`
+```bash
+certbot certonly \
+  -a dns-dnspod-109 \
+  --dns-dnspod-109-credentials ~/.secrets/certbot/dnspod-109.ini \
+  -d example.com \
+  -d *.example.com
+```
+
 To acquire a certificate for example.com, waiting 60 seconds for DNS propagation
 ```bash
 certbot certonly \
@@ -85,7 +103,7 @@ certbot certonly \
   -d example.com
 ```
 
-Test run
+Test run (Skipping the final certificate issuance)
 ```bash
 certbot certonly \
   --register-unsafely-without-email \
@@ -96,8 +114,22 @@ certbot certonly \
   --dry-run
 ```
 
+Test run a wildcard certificate for `example.com`(Skipping the final certificate issuance)
+```bash
+certbot certonly \
+  --register-unsafely-without-email \
+  -a dns-dnspod-109 \
+  --dns-dnspod-109-credentials ~/.secrets/certbot/dnspod-109.ini \
+  --dns-dnspod-109-propagation-seconds 60 \
+  -v \
+  --dry-run \
+  -d example.com \
+  -d *.example.com
+```
+
+
 ## Parameter Description
-``--dns-dnspod-109-credentials <path>`` points to the credentials file. (Required)
+``--dns-dnspod-109-credentials <path>`` Path to the credential file (required)
 
 ``--dns-dnspod-109-propagation-seconds`` The number of seconds to wait for DNS propagation before asking the ACME server to verify DNS records. If DNS records appear to be added successfully but verification fails, try increasing this value. (Default: 10)
 
@@ -114,6 +146,8 @@ certbot certonly \
 
 ## 只是另一个适用于 Certbot 的 DNSPod DNS Authenticator 插件
 
+只是另一个适用于 [Certbot](https://certbot.eff.org/) 的 Tencent Cloud DNSPod DNS Authenticator 插件
+
 `certbot-dns-dnspod-109` 插件通过使用 Dnspod API（腾讯云 API 3.0）创建并随后删除 TXT 记录，自动完成`dns-01` 质询（`~acme.challenges.DNS01`）。
 
 如果你使用 [Dnspod](https://www.dnspod.cn/) ([腾讯云](https://cloud.tencent.com)) 作为你的域名解析服务提供商，那么这就是你的插件。
@@ -121,6 +155,7 @@ certbot certonly \
 在以下版本中测试通过
 - Certbot 3.0.1
 - Certbot 5.1.0
+- Certbot 5.2.2
 
 ## 使用方法
 
@@ -150,10 +185,15 @@ snap connect certbot:plugin certbot-dns-dnspod-10935336
 
 ### 3. 准备凭证文件
 
-foobar.ini:
+foobar.ini: 
 ```ini
 dns_dnspod_109_secret_id=foo
 dns_dnspod_109_secret_key=bar
+```
+
+可选参数: 
+```ini
+dns_dnspod_109_endpoint=dnspod.tencentcloudapi.com
 ```
 
 ### 4. 准备就绪
@@ -164,30 +204,40 @@ dns_dnspod_109_secret_key=bar
 
 ```bash
 certbot certonly \
--a dns-dnspod-109 \
---dns-dnspod-109-credentials ~/.secrets/certbot/dnspod-109.ini \
--d example.com
+  -a dns-dnspod-109 \
+  --dns-dnspod-109-credentials ~/.secrets/certbot/dnspod-109.ini \
+  -d example.com
 ```
 
 获取同时有 `example.com` 和 `www.example.com` 的单个证书
 ```bash
 certbot certonly \
--a dns-dnspod-109 \
---dns-dnspod-109-credentials ~/.secrets/certbot/dnspod-109.ini \
--d example.com \
--d www.example.com
+  -a dns-dnspod-109 \
+  --dns-dnspod-109-credentials ~/.secrets/certbot/dnspod-109.ini \
+  -d example.com \
+  -d www.example.com
 ```
+
+获取 `example.com` 的泛域名证书
+```bash
+certbot certonly \
+  -a dns-dnspod-109 \
+  --dns-dnspod-109-credentials ~/.secrets/certbot/dnspod-109.ini \
+  -d example.com \
+  -d *.example.com
+```
+
 
 获取 `example.com` 的证书，但设置等待 60 秒（等待 DNS 传播）
 ```bash
 certbot certonly \
--a dns-dnspod-109 \
---dns-dnspod-109-credentials ~/.secrets/certbot/dnspod-109.ini \
---dns-dnspod-109-propagation-seconds 60 \
--d example.com
+  -a dns-dnspod-109 \
+  --dns-dnspod-109-credentials ~/.secrets/certbot/dnspod-109.ini \
+  --dns-dnspod-109-propagation-seconds 60 \
+  -d example.com
 ```
 
-测试运行
+测试运行（跳过最终证书颁发）
 ```bash
 certbot certonly \
   --register-unsafely-without-email \
@@ -198,8 +248,22 @@ certbot certonly \
   --dry-run
 ```
 
-## 参数说明
-``--dns-dnspod-109-credentials <路径>`` 指向凭证文件。（必需）
+测试运行，获取 `example.com` 的泛域名证书（跳过最终证书颁发）
+```bash
+certbot certonly \
+  --register-unsafely-without-email \
+  -a dns-dnspod-109 \
+  --dns-dnspod-109-credentials ~/.secrets/certbot/dnspod-109.ini \
+  --dns-dnspod-109-propagation-seconds 60 \
+  -v \
+  --dry-run \
+  -d example.com \
+  -d *.example.com
+```
 
-``--dns-dnspod-109-propagation-seconds`` 在要求 ACME 服务器验证 DNS 记录之前等待 DNS 传播的秒数。如果显示 DNS 记录添加成功但验证失败，则尝试增加此值 。 （默认值：10）
+
+## 参数说明
+``--dns-dnspod-109-credentials <路径>`` 指向凭证文件的路径（必需）
+
+``--dns-dnspod-109-propagation-seconds`` 在要求 ACME 服务器验证 DNS 记录之前等待 DNS 传播的秒数。如果显示 DNS 记录添加成功但验证失败，则尝试增加此值 （默认值：10）
 
