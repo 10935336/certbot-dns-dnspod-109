@@ -38,6 +38,8 @@ pip install git+https://github.com/10935336/certbot-dns-dnspod-109.git
 
 
 #### snap:
+The snap version is deprecated and will not receive updates after version v1.0.2.
+
 ```bash
 snap install certbot-dns-dnspod-10935336
 snap set certbot trust-plugin-with-root=ok
@@ -171,6 +173,9 @@ pip install git+https://github.com/10935336/certbot-dns-dnspod-109.git
 ```
 
 #### snap:
+
+snap 版本已弃用，将不会收到 v1.0.2 版本之后的更新
+
 ```bash
 snap install certbot-dns-dnspod-10935336
 snap set certbot trust-plugin-with-root=ok
